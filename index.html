@@ -16,6 +16,137 @@
   color: #33ff6e;
  
       }
+
+
+         .container {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            /* Colorful border */
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #60a5fa, #34d399, #facc15, #fb923c) 1; /* Gradient border */
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .input-group input[type="text"] {
+            flex-grow: 1;
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #60a5fa; /* Vibrant blue border */
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .input-group input[type="text"]:focus {
+            outline: none;
+            border-color: #fb923c; /* Vibrant orange focus border */
+            box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.3); /* Soft glow on focus */
+        }
+        .generate-button {
+            /* More vibrant and diverse gradient background for button */
+            background-image: linear-gradient(to right, #ef4444, #fb923c, #facc15); /* Red, Orange, Yellow gradient */
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3); /* Shadow reflecting button color */
+            border: none;
+            width: auto;
+            min-width: 180px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .generate-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.4);
+            background-image: linear-gradient(to right, #facc15, #fb923c, #ef4444); /* Reverse gradient on hover */
+        }
+        .generate-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .image-display {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            background-color: #fefce8; /* Lighter yellow background for image area */
+            border-radius: 1.25rem;
+            border: 2px dashed #facc15; /* Vibrant yellow dashed border */
+            overflow: hidden;
+            position: relative;
+        }
+        .image-display img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            display: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .loading-indicator {
+            display: none;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #34d399; /* Vibrant green spinner */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error-message {
+            color: #ef4444;
+            margin-top: 1rem;
+            font-weight: 600;
+            background-color: #fee2e2;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #f87171;
+        }
+        .text-gray-800 {
+            color: #374151;
+        }
+        .text-gray-600 {
+            color: #4b5563;
+        }
+        .text-gray-400 {
+            color: #9ca3af;
+        }
+        /* Footer styles */
+        .footer {
+            margin-top: 2rem;
+            color: white;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 640px) {
+            .input-group {
+                flex-direction: row;
+            }
+            .input-group input[type="text"] {
+                width: auto;
+            }
+        }
       </style>
       <h1>father name</h1>
       <h4>musa</h4>
@@ -23,6 +154,262 @@
       <h4>mallika</h4>
       <h1>kids</h1>
       <h4>luqman,imran</h4>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator by LUQMAN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and overall aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* More vibrant and diverse gradient background */
+            background: linear-gradient(135deg, #60a5fa, #34d399, #facc15, #fb923c, #ef4444); /* Blue, Green, Yellow, Orange, Red */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            /* Colorful border */
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #60a5fa, #34d399, #facc15, #fb923c) 1; /* Gradient border */
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .input-group input[type="text"] {
+            flex-grow: 1;
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #60a5fa; /* Vibrant blue border */
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .input-group input[type="text"]:focus {
+            outline: none;
+            border-color: #fb923c; /* Vibrant orange focus border */
+            box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.3); /* Soft glow on focus */
+        }
+        .generate-button {
+            /* More vibrant and diverse gradient background for button */
+            background-image: linear-gradient(to right, #ef4444, #fb923c, #facc15); /* Red, Orange, Yellow gradient */
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3); /* Shadow reflecting button color */
+            border: none;
+            width: auto;
+            min-width: 180px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .generate-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.4);
+            background-image: linear-gradient(to right, #facc15, #fb923c, #ef4444); /* Reverse gradient on hover */
+        }
+        .generate-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .image-display {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            background-color: #fefce8; /* Lighter yellow background for image area */
+            border-radius: 1.25rem;
+            border: 2px dashed #facc15; /* Vibrant yellow dashed border */
+            overflow: hidden;
+            position: relative;
+        }
+        .image-display img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            display: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .loading-indicator {
+            display: none;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #34d399; /* Vibrant green spinner */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error-message {
+            color: #ef4444;
+            margin-top: 1rem;
+            font-weight: 600;
+            background-color: #fee2e2;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #f87171;
+        }
+        .text-gray-800 {
+            color: #374151;
+        }
+        .text-gray-600 {
+            color: #4b5563;
+        }
+        .text-gray-400 {
+            color: #9ca3af;
+        }
+        /* Footer styles */
+        .footer {
+            margin-top: 2rem;
+            color: white;
+            font-size: 0.9rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 640px) {
+            .input-group {
+                flex-direction: row;
+            }
+            .input-group input[type="text"] {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-extrabold text-gray-800 mb-4">AI Image Generator</h1>
+        <p class="text-gray-600 mb-6">Enter a detailed description of the image you want to create.</p>
+
+        <div class="input-group">
+            <input type="text" id="promptInput" placeholder="e.g., A vibrant rainbow city with flying cars" class="shadow-sm">
+            <button id="generateButton" class="generate-button">Generate Image</button>
+        </div>
+
+        <div id="loadingIndicator" class="loading-indicator mx-auto"></div>
+        <div id="errorMessage" class="error-message hidden"></div>
+
+        <div class="image-display">
+            <img id="generatedImage" src="" alt="Generated Image">
+            <p id="imagePlaceholder" class="text-gray-400">Your generated image will appear here.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 AI Image Generator. Made with ❤️ by LUQMAN.</p>
+        <p>All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Get references to HTML elements
+        const promptInput = document.getElementById('promptInput');
+        const generateButton = document.getElementById('generateButton');
+        const generatedImage = document.getElementById('generatedImage');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const errorMessage = document.getElementById('errorMessage');
+        const imagePlaceholder = document.getElementById('imagePlaceholder');
+
+        // Event listener for the generate button
+        generateButton.addEventListener('click', async () => {
+            const prompt = promptInput.value.trim(); // Get and trim the prompt value
+
+            // Validate prompt input
+            if (!prompt) {
+                errorMessage.textContent = 'Please enter a prompt to generate an image.';
+                errorMessage.classList.remove('hidden');
+                generatedImage.style.display = 'none'; // Hide image if no prompt
+                imagePlaceholder.style.display = 'block'; // Show placeholder
+                return;
+            }
+
+            // Reset UI state
+            errorMessage.classList.add('hidden');
+            generatedImage.style.display = 'none';
+            imagePlaceholder.style.display = 'none';
+            loadingIndicator.style.display = 'block'; // Show loading indicator
+
+            try {
+                // Construct the payload for the image generation API
+                const payload = {
+                    instances: { prompt: prompt },
+                    parameters: { "sampleCount": 1 } // Request one image
+                };
+
+                // API key is left empty; Canvas will inject it at runtime
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+
+                // Make the fetch call to the Gemini API
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Check if the response was successful
+                if (!response.ok) {
+                    const errorDetail = await response.json();
+                    throw new Error(`API error: ${response.status} ${response.statusText} - ${JSON.stringify(errorDetail)}`);
+                }
+
+                const result = await response.json();
+
+                // Check if image data is present in the response
+                if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                    const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                    generatedImage.src = imageUrl;
+                    generatedImage.style.display = 'block'; // Show the generated image
+                } else {
+                    errorMessage.textContent = 'No image data received. Please try a different prompt.';
+                    errorMessage.classList.remove('hidden');
+                    imagePlaceholder.style.display = 'block'; // Show placeholder if no image
+                }
+            } catch (error) {
+                console.error('Error generating image:', error);
+                errorMessage.textContent = `Failed to generate image: ${error.message}. Please try again.`;
+                errorMessage.classList.remove('hidden');
+                imagePlaceholder.style.display = 'block'; // Show placeholder on error
+            } finally {
+                loadingIndicator.style.display = 'none'; // Hide loading indicator
+            }
+        });
+
+        // Ensure the initial state displays the placeholder
+        window.onload = () => {
+            generatedImage.style.display = 'none';
+            imagePlaceholder.style.display = 'block';
+        };
+    </script>
       </center>
-  </body>
   </html>
